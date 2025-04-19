@@ -5,6 +5,7 @@ const moduleController = require("../controllers/ModuleController");
 routes.post("/add",moduleController.addModule);
 routes.get("/allmodules",moduleController.getAllModules);
 routes.get("/modules/:id",moduleController.getModuleById)
-routes.delete("/module/:id",moduleController.deleteModule)
+routes.delete("/moduledelete/:id",moduleController.deleteModule)
+routes.put("/updatemodule/:id",moduleController.updateModule)
 
 module.exports = routes;

@@ -18,7 +18,7 @@ const addTeam = async (req, res) =>{
 };
 
 
-const getAllTeams = async (req,res) => {
+/*const getAllTeams = async (req,res) => {
     try{
         const teams = await teamModel.find().populate("projectId");
                    res.status(404).json({
@@ -30,7 +30,19 @@ const getAllTeams = async (req,res) => {
         });
 
     }
-};
+};*/
+const getAllTeams = async(req, res) => {
+    try {
+      const teams = await teamModel.find().populate('userId').populate('projectId');
+      if (!teams.length) {
+        return res.status(404).json({ message: 'No teams found' });
+      }
+      res.status(200).json({ data: teams });
+    } catch (error) {
+      console.error('Error fetching teams:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  };
 const getTeamtById = async(req,res)=>{
     const foundTeam = await teamModel.findById(req.params.id)
     res.json({

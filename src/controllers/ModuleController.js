@@ -45,11 +45,31 @@ const deleteModule = async(req,res)=>{
         data:deleteModule
     })
 }
+const updateModule = async (req, res) => {
+ //update  tablename set ? where id=?
+//update new datra  ...> req.body
+//id ...> req.params.id
+
+try{
+const updatedModule = await moduleModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+res.status(201).json({
+    message:"module update successfully",
+    data:updatedModule,
+});
+}catch(err){
+    res.status(500).json({
+        message:"error whil updatye module",
+        err:err
+    })
+}
+
+    };
 
 
 module.exports = {
     addModule,
     getAllModules,
     getModuleById,
-    deleteModule
+    deleteModule,
+    updateModule
 }

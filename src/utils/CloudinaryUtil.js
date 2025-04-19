@@ -31,5 +31,5 @@ const updateProject =  async(req,res)=>{
 
 
 module.exports = {
-    uploadFileToCloudinary,
+    uploadFileToCloudinary,updateProject
 }

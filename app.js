@@ -56,10 +56,21 @@ app.use("/status",statuseRoutes)
 const reportRoutes = require("./src/routes/ReportRoutes")
 app.use("/report",reportRoutes)
 
+const helpRequestRoutes = require("./src/routes/HelpRequestRoutes")
+app.use("/helprequest",helpRequestRoutes)
+
+const notificationRoutes = require("./src/routes/NotificationRoutes");
+app.use("/notifications", notificationRoutes);
+
+const uploadWorkRoutes = require('./src/routes/uploadWorkRoutes')
+app.use('/fileUpload',uploadWorkRoutes)
+
+const commentRoutes = require('./src/routes/commentRoutes');
+app.use('/comments',commentRoutes);
 
 
-
-
+const milestoneRoutes = require("./src/routes/MilestoneRoutes")
+app.use("/milestone",milestoneRoutes)
 
 //mongodb database connection
 mongoose.connect("mongodb://127.0.0.1:27017/25_intern_node_new").then(()=>{
@@ -69,7 +80,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/25_intern_node_new").then(()=>{
 
 
 //server create PORT
-const PORT = 3000
+const PORT = 4000
 app.listen(PORT,()=>{
     console.log("server is running on port",PORT)
 })

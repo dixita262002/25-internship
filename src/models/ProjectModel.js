@@ -8,7 +8,7 @@ const projectSchema = new Schema({
    //},
    title:{
     type:String,
-    uniqe:true
+    required: true
    },
    description:{
     type:String,
@@ -17,16 +17,30 @@ const projectSchema = new Schema({
       type:String,      
    },
    startDate:{
-      type:Date
+      type:Date,
+      required: true
    },
    completionDate:{
-      type:Date
+      type:Date,
+      required: true
    },
-   imageURL:{
-      type:String,
+   assignedUserId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+      required: true
+    },
+    status: {
+      type: String,
+      enum: ["Pending", "In Progress", "Completed"],
+      default: "Pending",
+    },
+    
+    
+ imageURL:{
+   type:String,
    }
 },{
     timestamps:true
 
 })
-module.exports = mongoose.model('projects',projectSchema);
+module.exports = mongoose.model('project',projectSchema);

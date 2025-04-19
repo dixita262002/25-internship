@@ -3,8 +3,7 @@ const mongoose = require("mongoose")
 
  const moduleSchema = new Schema({
   moduleId:{
-         type:String
-         
+         type:String         
     },    
  moduleName:{
     type:String
@@ -29,4 +28,4 @@ startDate:{
     timestamps:true
  })
 
- module.exports = mongoose.model("modules",moduleSchema)
+ module.exports = mongoose.model("module",moduleSchema)

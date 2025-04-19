@@ -15,8 +15,10 @@ const mailOptions = {
     from:'dixitap016@gmail.com',
     to: to,
     subject:subject,
-    text:text
+   // text:text
    //html:"<h1>"+text+"<h1>"
+   //html:"<h1>"+text+"</h1>"
+   html:text
 }
 
 const mailresponse = await transporter.sendMail(mailOptions);

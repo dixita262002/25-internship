@@ -29,11 +29,21 @@ const getAllReports = async (req, res) => {
             })
     
         }
-    }
+    };
+const getReportsByUserId = async (req, res) => {
+        const { userId } = req.params;
+        try {
+          const reports = await reportModel.find({ userId }); // Adjust field if it's named differently
+          res.status(200).json(reports);
+        } catch (error) {
+          res.status(500).json({ message: 'Failed to fetch reports', error });
+        }
+      };
 
 
     module.exports ={
         addReport,
-        getAllReports
+        getAllReports,
+        getReportsByUserId
     }
 

@@ -6,39 +6,36 @@ const TeamMemberSchema = new Schema(
     name: {
       type: String,
       required: true,
-      trim: true,
     },
     email: {
       type: String,
       required: true,
       unique: true,
     },
-    passwordHash: {
-      type: String,
-      required: true,
-    },
     role: {
       type: String,
-      enum: ["team_member"], // Default role is 'team_member'
-      default: "team_member",
+      enum: [ 'User', 'Developer', 'Designer', 'Tester','user'], // Default role is 'team_member'
+      default: "user",
     },
-    ProjectId: [
+    projectId: 
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Project",
+        ref: "project",
+        required: true,
       },
-    ],
-    taskId: [
+    
+    taskId: 
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Task",
+        ref: "task",
+        required: true,
       },
-    ],
-    status: {
-      type: String,
-      enum: ["Active", "Inactive"],
-      default: "Active",
-    },
+    
+    completedTasksCount: { 
+      type: Number, 
+      default: 0
+     },
+    
   },
   {
     timestamps: true, // Auto-adds 'createdAt' and 'updatedAt'
